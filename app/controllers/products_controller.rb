@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
 	def index 
-		@products = Product.order(:price, :name).limit 5
+		@products = Product.order(:id, :price, :name).limit 20
 	end
 
 	def create
-		values = params.require(:produto).permit!
-		Product.create values
+		Product.create params_permit		
+	end
+
+	def params_permit
+		params.require(:product)
+			.permit :name, :description, :price, :amount			
 	end
 end

@@ -1,27 +1,32 @@
-<html>
-	<div class="container">
-		<%= form_for Product.new do |f| %>
-			<table class="table">
-				<tr>
-					<td><label for="name">Name</label></td>
-					<td><input type="text" name="produto[name]"></td>
-				</tr>
-				<tr>
-					<td><label for="description">Description</label></td>
-					<td><textarea name="produto[description]"></textarea></td>
-				</tr>
-				<tr>
-					<td><label for="price">Price</label></td>
-					<td><input type="text" name="produto[price]"></td>
-				</tr>
-				<tr>
-					<td><label for="amount" step="0.01">Amount</label></td>
-					<td><input type="text" name="produto[amount]"></td>
-				</tr>
-				<tr>
-					<td><button>Criar</button></td>
-				</tr>
-			</table> 
-		<% end %>
-	</div>
-</html>
+<div class="container form-horizontal" style="width:600px; margin-top:20px;">		
+	<h1 style="text-align:center">Form Register</h1>
+	<%= form_for Product.new do |f| %>
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name,
+				class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :description %>
+			<%= f.text_area :description, rows: 4,
+				class: "form-control" %> 
+		</div>
+
+		<div class="form-inline">
+			<div class="form-group">
+				<%= f.label :price %>
+				<%= f.number_field :price, step: 0.01,
+					class: "form-control" %>
+
+				<%= f.label :amount %>
+				<%= f.number_field :amount, step: 1,
+					class: "form-control" %>
+			</div>
+		</div>
+		
+		<div class="form-group" style="margin-top:20px">
+			<%=  f.submit "Criar", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

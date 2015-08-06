@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+	<%= nav_bar brand: "SmartBody Store", brand_link: root_path %> 
+	<div class="container">		
+		<%= yield %>
+	</div>
 
 </body>
 </html>

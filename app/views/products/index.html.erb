@@ -1,32 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>SmartBody - Store</title>
-</head>
-<body>
-	<div class="container">
-		<%= nav_bar brand: "SmartBody Store", brand_link: root_path %> 
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Amount</th>
-				</tr>
-			</thead>
-			<tbody>			
-				<% @products.each do |p| %>
-					<tr>
-						<th><%= p.name %></th>
-						<th><%= p.description %></th>
-						<th><%= p.price %></th>
-						<th><%= p.amount %></th>
-					</tr>
-				<% end %>			
-			</tbody>
-		</table>
-	</div>
-</body>
-</html>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Amount</th>
+		</tr>
+	</thead>
+	<tbody>			
+		<% @products.each do |p| %>
+			<tr>
+				<th><%= p.name %></th>
+				<th><%= p.description %></th>
+				<th><%= p.price %></th>
+				<th><%= p.amount %></th>
+			</tr>
+		<% end %>			
+	</tbody>
+</table>
