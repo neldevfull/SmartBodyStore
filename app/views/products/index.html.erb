@@ -14,6 +14,10 @@
 				<th><%= p.description %></th>
 				<th><%= p.price %></th>
 				<th><%= p.amount %></th>
+				<th><%= button_to "Remove", p,
+					method: :delete,
+						class: "btn btn-danger",
+						data: {confirm: "Deseja deletar #{p.name}"} %></th>				
 			</tr>
 		<% end %>			
 	</tbody>

@@ -1,10 +1,16 @@
 class ProductsController < ApplicationController
 	def index 
-		@products = Product.order(:id, :price, :name).limit 20
+		@products = Product.order('id DESC').limit 50
 	end
 
 	def create
 		Product.create params_permit		
+		redirect_to root_url
+	end
+
+	def destroy
+		Product.destroy(params[:id])
+		redirect_to root_url
 	end
 
 	def params_permit
