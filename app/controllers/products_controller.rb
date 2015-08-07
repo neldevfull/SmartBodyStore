@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
+	
 	def index 
 		@products = Product.order('id DESC').limit 50
+	end
+
+	def search
+		@name_search = params[:name]
+		@products_search = Product.where "name like ?", "%#{@name_search}%"
 	end
 
 	def create
@@ -17,4 +23,5 @@ class ProductsController < ApplicationController
 		params.require(:product)
 			.permit :name, :description, :price, :amount			
 	end
+
 end

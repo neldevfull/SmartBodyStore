@@ -7,10 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= nav_bar brand: "SmartBody Store", brand_link: root_path %> 
+	<%= nav_bar brand: "SmartBody Store", brand_link: root_path  do %>
+		<%= form_tag search_product_path, method: :get,
+								 class: "navbar-form navbar-right" do %>
+			<div class="form-group">
+				<%= text_field_tag :name, @name_search,
+											     class: "form-control" %>
+				<%= button_to "Search", nil, class: "btn btn-default" %>
+			</div>	
+		<% end %>
+	<% end %> 
 	<div class="container">		
 		<%= yield %>
 	</div>
-
 </body>
-</html>
+</html> 
