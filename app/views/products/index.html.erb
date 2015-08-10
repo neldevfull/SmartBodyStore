@@ -10,23 +10,11 @@
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
-			<th>Amount</th>
 			<th>Delete</th>
 		</tr>
 	</thead>
 	<tbody>			
-		<% @products.each do |p| %>
-			<tr>
-				<th><%= p.name %></th>
-				<th><%= p.description %></th>
-				<th><%= p.price %></th>
-				<th><%= p.amount %></th>
-				<th><%= button_to "Remove", p,
-					class: "btn btn-danger",
-					method: :delete,
-					data: { confirm: "Do you want to delete #{p.name} ?" } %></th>				
-			</tr>
-		<% end %>			
+		<%= render @products %>		
 	</tbody>
 </table>
 

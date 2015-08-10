@@ -10,3 +10,5 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Twitter Bootstrap
 gem 'twitter-bootstrap-rails'
+# Rails-i18n
+gem 'rails-i18n', '~> 4.0.0'

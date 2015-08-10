@@ -1,0 +1,9 @@
+<tr>
+	<th><%= product.name %></th>
+	<th><%= product.description %></th>
+	<th><%= product.price %></th>
+	<th><%= button_to "Remove", product,
+		class: "btn btn-danger",
+		method: :delete,
+		data: { confirm: "Do you want to delete #{product.name} ?" } %></th>				
+</tr>
