@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		@product = Product.new
+		@product     = Product.new
+		@departments = Department.all .order('name ASC')
 	end
 
 	def search
@@ -30,7 +31,7 @@ class ProductsController < ApplicationController
 
 	def params_permit
 		params.require(:product)
-			.permit :name, :description, :price, :amount			
+			.permit :name, :description, :price, :amount, :department_id			
 	end
 
 end
