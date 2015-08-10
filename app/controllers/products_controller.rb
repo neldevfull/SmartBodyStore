@@ -1,35 +1,61 @@
 class ProductsController < ApplicationController
+
+	before_action :set_product, only: [:edit, :update, :destroy]
 	
 	def index 
 		@products = Product.order('id DESC').limit 50
-	end
-
-	def new
-		@product     = Product.new
-		@departments = Department.all .order('name ASC')
 	end
 
 	def search
 		@name_search = params[:name]
 		@products_search = Product.where "name like ?", "%#{@name_search}%"
 	end
+	
+	def new
+		@product = Product.new
+		rendering :new
+	end
 
 	def create
-		@product = Product.new params_permit
+		@product = Product.new product_params
 		if @product.save
-			flash[:notice] = "Product saved successfully"		 
-			redirect_to root_url
+			flash[:notice] = "Successfully saved product"		 
+			redirect_to root_path
 		else
-			render new_product_path
+			rendering :new
+		end
+	end
+	
+	def edit		
+		rendering :edit
+	end
+
+	def update			
+		if @product.update product_params 
+			flash[:notice] = "Successfully upgraded product"
+			redirect_to root_path
+		else
+			rendering :edit
 		end
 	end
 
-	def destroy
-		Product.destroy(params[:id])
+	def destroy			
+		@product.destroy
 		redirect_to root_url
 	end
 
-	def params_permit
+	private 
+
+	def set_product
+		@product = Product.find(params[:id])
+	end
+
+	def rendering(view)
+		@departments = Department.all.order('name ASC')
+		render view
+	end
+
+	def product_params
 		params.require(:product)
 			.permit :name, :description, :price, :amount, :department_id			
 	end

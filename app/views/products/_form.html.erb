@@ -1,0 +1,45 @@
+<% @product.errors.full_messages.each do |message| %>
+	<div class="alert alert-danger" role="alert">
+		<%= message %>
+	</div>
+<% end %>
+
+<div class="container form-horizontal" style="width:50%; margin-top:20px;">		
+	<h1 style="text-align:center">Form Register</h1>
+	<%= form_for @product do |f| %>
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name,
+				class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :description %>
+			<%= f.text_area :description, rows: 4,
+				class: "form-control" %> 
+		</div>
+
+		<div class="form-group">
+			<%= f.label :department %>
+			<%= f.collection_select :department_id, @departments, :id, :name,
+				{}, class: "form-control" %>
+		</div>
+
+		<div class="form-inline">
+			<div class="form-group" style="width: 50%;">
+				<%= f.label :price %>
+				<%= f.number_field :price, step: 0.01,
+					class: "form-control" %>
+			</div>
+			<div class="form-group" style="width: 50%;">
+				<%= f.label :amount %>
+				<%= f.number_field :amount, step: 1,
+					class: "form-control" %>
+			</div>
+		</div>
+		
+		<div class="form-group" style="margin-top:20px">
+			<%=  f.submit button_value, class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>
